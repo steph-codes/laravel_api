@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//if u dont want to pass id in the url, u can pass in slugs
+Route::get('/{slug}', function ($slug) {
+   $post = App\Models\Post::whereSlug($slug)->first();
+   return view('post', ['post'=> $post]);
+});
 
 Route::get('/', function () {
     return view('welcome');

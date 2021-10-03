@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Post; 
 
 
 
@@ -13,7 +14,51 @@ use Illuminate\Support\Facades\Route;
 //step 4 update a single (PUT/PATCH) /api/posts/{id}
 //step 5 delete (DELETE) /api/posts/{id}
 
-Route::get('/posts');
+// Route::get('/update', function(){
+//     $post = Post::find(2);
+//     $post->update(['title' => 'my newest title']);
+//     return $post;
+// });
+
+//NOTE 3 DIFF WAYS
+
+//A... with create
+//Route::resource('posts', 'PostController');
+
+//B. by grouping in versins v1 etc
+Route::prefix('v1')->group(function(){
+    Route::apiResource('posts', 'PostController');
+});
+
+//C ..exludes create since its not inserting as in form
+// Route::apiResource('posts', 'PostController');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//create route
+// Route::get('/posts', function() {
+//     //$post = Post::find(1);
+
+//      $post = Post::create
+//     ([
+//     'title'=> 'my second post', 
+//     'slug'=>'my-second-post'
+//     ]);
+
+//     return $post;  
+// });
+
 
 // create a resource (posts) in laravel
 
