@@ -31,6 +31,7 @@ class PostController extends Controller
         'title' => 'required'
         ]);
         //create a post
+        echo "created successfully";
         return Post::create($request->all());
     }
 
